@@ -1,7 +1,7 @@
-package com.artembredak.todoapp.Controller;
+package com.artembredak.todoapp.controller;
 
-import com.artembredak.todoapp.Entity.UserEntity;
-import com.artembredak.todoapp.Service.UserService;
+import com.artembredak.todoapp.entity.UserEntity;
+import com.artembredak.todoapp.service.UserService;
 import com.artembredak.todoapp.dto.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

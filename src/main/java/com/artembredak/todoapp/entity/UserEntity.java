@@ -1,9 +1,8 @@
-package com.artembredak.todoapp.Entity;
+package com.artembredak.todoapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.artembredak.todoapp.Repo;
+package com.artembredak.todoapp.repo;
 
-import com.artembredak.todoapp.Entity.TaskEntity;
+import com.artembredak.todoapp.entity.TaskEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

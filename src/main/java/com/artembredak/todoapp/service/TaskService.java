@@ -1,18 +1,16 @@
-package com.artembredak.todoapp.Service;
+package com.artembredak.todoapp.service;
 
 
-import com.artembredak.todoapp.Entity.TaskEntity;
-import com.artembredak.todoapp.Entity.UserEntity;
-import com.artembredak.todoapp.Repo.TaskRepo;
-import com.artembredak.todoapp.Repo.UserRepo;
+import com.artembredak.todoapp.entity.TaskEntity;
+import com.artembredak.todoapp.entity.UserEntity;
+import com.artembredak.todoapp.repo.TaskRepo;
+import com.artembredak.todoapp.repo.UserRepo;
 import com.artembredak.todoapp.dto.TaskDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
-import static com.artembredak.todoapp.Entity.TaskEntity.Status.TODO;
 
 
 @Service

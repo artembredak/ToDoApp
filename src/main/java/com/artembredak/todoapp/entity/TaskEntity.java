@@ -1,4 +1,4 @@
-package com.artembredak.todoapp.Entity;
+package com.artembredak.todoapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

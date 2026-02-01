@@ -1,7 +1,7 @@
 package com.artembredak.todoapp.dto;
 
-import com.artembredak.todoapp.Entity.TaskEntity.Priority;
-import com.artembredak.todoapp.Entity.TaskEntity.Status;
+import com.artembredak.todoapp.entity.TaskEntity.Priority;
+import com.artembredak.todoapp.entity.TaskEntity.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

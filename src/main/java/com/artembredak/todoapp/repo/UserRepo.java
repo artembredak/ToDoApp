@@ -1,11 +1,9 @@
-package com.artembredak.todoapp.Repo;
+package com.artembredak.todoapp.repo;
 
 
-import com.artembredak.todoapp.Entity.UserEntity;
+import com.artembredak.todoapp.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.scheduling.config.Task;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface UserRepo extends JpaRepository<UserEntity, Long> {
