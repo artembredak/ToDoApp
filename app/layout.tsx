@@ -5,8 +5,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
-  title: "TaskFlow - Modern Todo App",
-  description: "A beautiful task management application to organize your work",
+  title: "Tasks",
+  description: "Simple task management",
 }
 
 export default function RootLayout({

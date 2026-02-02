@@ -6,16 +6,19 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { Loader2 } from "lucide-react"
 
 interface TaskFormProps {
   open: boolean
@@ -65,23 +68,20 @@ export function TaskForm({ open, onOpenChange, task, onSubmit }: TaskFormProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md bg-card border-border/50">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>{isEditing ? "Edit Task" : "Create New Task"}</DialogTitle>
-          <DialogDescription>
-            {isEditing ? "Update the details of your task." : "Fill in the details to create a new task."}
-          </DialogDescription>
+          <DialogTitle>{isEditing ? "Edit task" : "New task"}</DialogTitle>
         </DialogHeader>
+        
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="title">Title</Label>
             <Input
               id="title"
-              placeholder="Enter task title"
+              placeholder="Task title"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               required
-              className="bg-secondary/50 border-border/50"
             />
           </div>
 
@@ -89,85 +89,62 @@ export function TaskForm({ open, onOpenChange, task, onSubmit }: TaskFormProps) 
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
-              placeholder="Enter task description (optional)"
+              placeholder="Optional description"
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               rows={3}
-              className="bg-secondary/50 border-border/50 resize-none"
+              className="resize-none"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="priority">Priority</Label>
+            <Label>Priority</Label>
             <Select
               value={formData.priority}
-              onValueChange={(value: "HIGH" | "MEDIUM" | "LOW") => setFormData({ ...formData, priority: value })}
+              onValueChange={(value: "HIGH" | "MEDIUM" | "LOW") =>
+                setFormData({ ...formData, priority: value })
+              }
             >
-              <SelectTrigger className="bg-secondary/50 border-border/50">
-                <SelectValue placeholder="Select priority" />
+              <SelectTrigger>
+                <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="HIGH">
-                  <span className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-red-500" />
-                    High
-                  </span>
-                </SelectItem>
-                <SelectItem value="MEDIUM">
-                  <span className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-yellow-500" />
-                    Medium
-                  </span>
-                </SelectItem>
-                <SelectItem value="LOW">
-                  <span className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-blue-500" />
-                    Low
-                  </span>
-                </SelectItem>
+                <SelectItem value="HIGH">High</SelectItem>
+                <SelectItem value="MEDIUM">Medium</SelectItem>
+                <SelectItem value="LOW">Low</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
-          {/* Only show status option when editing */}
           {isEditing && (
             <div className="space-y-2">
-              <Label htmlFor="status">Status</Label>
+              <Label>Status</Label>
               <Select
                 value={formData.status}
                 onValueChange={(value: "TODO" | "IN_PROGRESS" | "COMPLETED") =>
                   setFormData({ ...formData, status: value })
                 }
               >
-                <SelectTrigger className="bg-secondary/50 border-border/50">
-                  <SelectValue placeholder="Select status" />
+                <SelectTrigger>
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="TODO">To Do</SelectItem>
-                  <SelectItem value="IN_PROGRESS">In Progress</SelectItem>
-                  <SelectItem value="COMPLETED">Completed</SelectItem>
+                  <SelectItem value="TODO">To do</SelectItem>
+                  <SelectItem value="IN_PROGRESS">In progress</SelectItem>
+                  <SelectItem value="COMPLETED">Done</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           )}
 
-          <DialogFooter className="gap-2 sm:gap-0">
+          <div className="flex justify-end gap-2 pt-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={isLoading}>
               Cancel
             </Button>
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {isEditing ? "Saving..." : "Creating..."}
-                </>
-              ) : isEditing ? (
-                "Save changes"
-              ) : (
-                "Create task"
-              )}
+              {isLoading ? "Saving..." : isEditing ? "Save" : "Create"}
             </Button>
-          </DialogFooter>
+          </div>
         </form>
       </DialogContent>
     </Dialog>
