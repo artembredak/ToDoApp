@@ -18,6 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Plus, Search, LogOut } from "lucide-react"
 
 type StatusFilter = "ALL" | "TODO" | "IN_PROGRESS" | "COMPLETED"
@@ -101,8 +102,9 @@ export default function DashboardPage() {
       {/* Header */}
       <header className="border-b border-border px-4 py-3 flex items-center justify-between">
         <h1 className="font-semibold">Tasks</h1>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <span className="text-sm text-muted-foreground hidden sm:block">{user?.username}</span>
+          <ThemeToggle />
           <Button variant="ghost" size="icon" onClick={handleLogout}>
             <LogOut className="h-4 w-4" />
             <span className="sr-only">Sign out</span>

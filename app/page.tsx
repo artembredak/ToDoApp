@@ -6,6 +6,7 @@ import { userApi, type UserDto } from "@/lib/api"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 
 export default function RegisterPage() {
@@ -34,7 +35,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
+    <main className="min-h-screen flex items-center justify-center p-4 relative">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="w-full max-w-sm space-y-6">
         <header className="space-y-1">
           <h1 className="text-2xl font-semibold tracking-tight">Create account</h1>
