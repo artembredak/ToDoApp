@@ -42,6 +42,12 @@ public class UserController {
         return service.findByUsername(username);
     }
 
+    //login
+    @PostMapping("/login")
+    public UserEntity login(@RequestParam String username, @RequestParam String password) {
+        return service.login(username, password);
+    }
+
     //delete
     @DeleteMapping("/delete")
     public void deleteUser(@RequestParam String email, @RequestParam String password) {

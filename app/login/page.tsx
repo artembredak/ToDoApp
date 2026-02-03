@@ -18,6 +18,7 @@ function LoginForm() {
   const [error, setError] = useState("")
   const registered = searchParams.get("registered") === "true"
   const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,11 +26,18 @@ function LoginForm() {
     setError("")
 
     try {
-      const user = await userApi.findByUsername(username)
+      const user = await userApi.login(username, password)
       login(user)
       router.push("/dashboard")
-    } catch {
-      setError("User not found")
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Login failed"
+      if (message.includes("User not found")) {
+        setError("User not found")
+      } else if (message.includes("Wrong password")) {
+        setError("Incorrect password")
+      } else {
+        setError("Login failed. Please try again.")
+      }
     } finally {
       setIsLoading(false)
     }
@@ -62,6 +70,18 @@ function LoginForm() {
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>

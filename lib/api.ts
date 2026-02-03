@@ -50,6 +50,18 @@ export const userApi = {
     return response.json()
   },
 
+  login: async (username: string, password: string): Promise<User> => {
+    const response = await fetch(
+      `${API_BASE_URL}/users/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+      { method: "POST" }
+    )
+    if (!response.ok) {
+      const error = await response.text()
+      throw new Error(error || "Invalid credentials")
+    }
+    return response.json()
+  },
+
   findByEmail: async (email: string): Promise<User | null> => {
     const response = await fetch(`${API_BASE_URL}/users/email/${email}`)
     if (!response.ok) return null

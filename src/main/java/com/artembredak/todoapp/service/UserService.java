@@ -50,6 +50,20 @@ public class UserService {
         return repo.findByUsername(username);
     }
 
+    //login user
+    public UserEntity login(String username, String password) {
+        UserEntity user = repo.findByUsername(username);
+        if (user == null) {
+            throw new IllegalStateException("User not found");
+        }
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new IllegalStateException("Wrong password");
+        }
+
+        return user;
+    }
+
     //delete user
     public void delete(String email, String password) {
         UserEntity user = repo.findByEmail(email)
