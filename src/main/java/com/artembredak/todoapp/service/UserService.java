@@ -34,6 +34,7 @@ public class UserService {
         return repo.save(user);
     }
 
+
     //findall
     public List<UserEntity> findAll() {
         return repo.findAll();
@@ -45,10 +46,22 @@ public class UserService {
         return repo.findByEmail(email);
     }
 
-    //find by username
-    public UserEntity findByUsername(String username) {
-        return repo.findByUsername(username);
+
+    //find by username and password
+    public UserEntity authenticate(String email,  String password) {
+        UserEntity user = repo.findUserByEmail(email);
+
+        if (user == null) {
+            throw new IllegalStateException("User not found");
+        }
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new IllegalStateException("Wrong password");
+        }
+
+        return user;
     }
+
 
     //delete user
     public void delete(String email, String password) {

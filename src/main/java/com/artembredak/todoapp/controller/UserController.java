@@ -5,13 +5,16 @@ import com.artembredak.todoapp.service.UserService;
 import com.artembredak.todoapp.dto.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
@@ -22,6 +25,12 @@ public class UserController {
     public UserEntity createUser(@RequestBody @Valid  UserDto dto) {
 
         return service.register(dto);
+    }
+
+    //login
+    @PostMapping("/login")
+    public UserEntity loginUser(@RequestParam String email, @RequestParam String password) {
+        return service.authenticate(email, password);
     }
 
     //find all users
@@ -36,11 +45,6 @@ public class UserController {
         return service.findByEmail(email);
     }
 
-    //find by username
-    @GetMapping("/username/{username}")
-    public UserEntity getUserByUsername(@PathVariable String username) {
-        return service.findByUsername(username);
-    }
 
     //delete
     @DeleteMapping("/delete")
