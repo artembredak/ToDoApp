@@ -174,3 +174,6 @@ Author
 
 Artem Bredak
 Java Backend / Full-Stack Developer
+
+<img width="916" height="585" alt="Screenshot 2026-02-09 at 17 08 20" src="https://github.com/user-attachments/assets/efb8ce1e-97b0-4d95-96e1-f2bb1cb309fe" />
+
