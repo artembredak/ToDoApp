@@ -15,6 +15,10 @@ public interface TaskRepo extends JpaRepository<TaskEntity, Long> {
 
     Optional<TaskEntity> findById(Long taskId);
 
+    // Add these methods to TaskRepo
+    List<TaskEntity> findByUserEmail(String email);
+    List<TaskEntity> findByUserEmailAndStatus(String email, TaskEntity.Status status);
+
 
 
 

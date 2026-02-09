@@ -16,46 +16,41 @@ import java.util.List;
 public class TaskController {
 
     @Autowired
-    private  TaskService service;
+    private TaskService service;
 
-
-    //creating a task
     @PostMapping("/create")
     public TaskEntity createTask(
             @Valid @RequestBody TaskDto taskDto,
-            @RequestParam String username
+            @RequestParam String username,
+            @RequestParam String email
     ) {
-
-        return service.save(taskDto, username);
+        return service.save(taskDto, username, email);
     }
 
-
-    //all tasks
     @GetMapping
-    public List<TaskEntity> findAllTasks(@RequestParam String username) {
-
-        return service.findAll(username);
+    public List<TaskEntity> findAllTasks(
+            @RequestParam String username,
+            @RequestParam String email
+    ) {
+        return service.findAll(username, email);
     }
 
-    //update
     @PutMapping("/{taskId}")
     public TaskEntity updateTask(@RequestParam Long taskId, @RequestBody TaskDto taskDto) {
         return service.update(taskId, taskDto);
     }
 
-    //delete
     @DeleteMapping("/{taskId}")
     public void deleteTask(@RequestParam Long taskId) {
         service.delete(taskId);
     }
 
-    //task by status
     @GetMapping("/by-status")
     public List<TaskEntity> getByStatus(
             @RequestParam String username,
+            @RequestParam String email,
             @RequestParam TaskEntity.Status status
     ) {
-        return service.findByStatus(username, status);
+        return service.findByStatus(username, email, status);
     }
-
 }

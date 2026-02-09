@@ -25,6 +25,9 @@ public class UserService {
         if (repo.existsByEmail(userDto.getEmail())) {
             throw new IllegalStateException("Email already exists");
         }
+        if (repo.existsByUsername(userDto.getUsername())) {
+            throw new IllegalStateException("Username already exists");
+        }
 
         UserEntity user = new UserEntity();
         user.setUsername(userDto.getUsername());
