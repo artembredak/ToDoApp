@@ -175,5 +175,11 @@ Author
 Artem Bredak
 Java Backend / Full-Stack Developer
 
+<img width="974" height="680" alt="Screenshot 2026-02-09 at 19 26 33" src="https://github.com/user-attachments/assets/10ded2bc-233a-4037-937e-e798bde99f2e" />
+
+<img width="1046" height="667" alt="Screenshot 2026-02-09 at 19 26 01" src="https://github.com/user-attachments/assets/2450bf47-5187-44c8-9619-28b58ea3e549" />
+
+<img width="742" height="687" alt="Screenshot 2026-02-09 at 19 27 51" src="https://github.com/user-attachments/assets/9c66d508-7917-4775-8743-01444eb1bd0c" />
+
 <img width="916" height="585" alt="Screenshot 2026-02-09 at 17 08 20" src="https://github.com/user-attachments/assets/efb8ce1e-97b0-4d95-96e1-f2bb1cb309fe" />
 
